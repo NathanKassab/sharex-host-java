@@ -1,0 +1,7 @@
+.image-container .option-buttons{
+    visibility: hidden;
+}
+
+.image-container:hover .option-buttons{
+    visibility: visible;
+}

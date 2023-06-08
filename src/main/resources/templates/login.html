@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link th:href="@{/css/defaults.css}" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-100">
+<div th:replace="fragments/topnav :: topnav"></div>
+<div class="flex justify-center items-center h-screen" id="form-container">
+    <form class="bg-slate-300 p-5 rounded" th:action="@{/processLogin}" method="post">
+        <h1 class="block text-lg font-semibold">Login</h1>
+        <div>
+            <label class="block pt-1" for="username">Email: </label>
+            <input class="block pb-1" type="email" name="username" id="username"/>
+        </div>
+        <div>
+            <label class="block pt-1" for="password">Password: </label>
+            <input class="block pb-1" type="password" name="password" id="password"/>
+        </div>
+        <div><input class="pt-1 cursor-pointer" type="submit" value="Sign In"/></div>
+    </form>
+</div>
+</body>
+</html>

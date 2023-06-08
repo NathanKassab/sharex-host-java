@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Panel</title>
+    <link th:href="@{/css/defaults.css}" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-zinc-800 min-h-screen">
+<div th:replace="fragments/topnav :: topnav"></div>
+<div class="h-48 w-full flex flex-auto justify-evenly mt-10">
+    <div class="w-1/4 bg-zinc-700 rounded flex flex-col justify-center content-center border border-gray-300">
+        <h1 class="text-white text-2xl text-center" th:text="'Welcome back, ' + ${user.getUsername()}"></h1>
+        <form class="text-center" th:action="@{/config.sxcu}" method="post">
+            <input class="text-white underline decoration-solid hover:text-amber-400 cursor-pointer" type="submit" value="Download config file"/>
+        </form>
+    </div>
+    <div class="w-1/4 bg-zinc-700 rounded flex flex-col justify-center content-center border border-gray-300">
+        <h1 class="text-white text-2xl text-center" th:text="'You have ' + ${uploadCount} + ' uploads'"></h1>
+        <div class="text-center">
+            <a class="text-white underline decoration-solid hover:text-amber-400 cursor-pointer" th:href="@{/panel/gallery}">View gallery</a>
+        </div>
+    </div>
+    <div class="w-1/4 bg-zinc-700 rounded flex flex-col justify-center content-center border border-gray-300">
+        <h1 class="text-white text-2xl text-center" th:text="'You can generate ' + ${user.getUnusedInvites()} + ' invites'"></h1>
+        <form th:if="${user.getUnusedInvites() > 0}" class="text-center" th:action="@{/panel/createInvite}" method="post">
+            <input class="text-white underline decoration-solid hover:text-amber-400 cursor-pointer" type="submit" value="Generate invite"/>
+        </form>
+        <div class="text-center">
+            <a class="text-white underline decoration-solid hover:text-amber-400 cursor-pointer" th:href="@{/panel/invites}">Show invites</a>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

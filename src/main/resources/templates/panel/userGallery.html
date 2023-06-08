@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    <link th:href="@{/css/defaults.css}" rel="stylesheet"/>
+    <link th:href="@{/css/gallery.css}" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-zinc-800">
+<div th:replace="fragments/topnav :: topnav"></div>
+<div class="grid grid-cols-6 gap-4 w-screen p-4">
+    <div class="w-full border border-gray-300 rounded flex flex-wrap">
+        <div class="absolute p-1">
+            <a th:href="'?page=' + (${page} - 1)" class="bg-red-500/40 hover:bg-red-500 text-white font-bold py-1 px-2 rounded" th:if="${page} > 0">Last page</a>
+            <a th:href="'?page=' + (${page} + 1)" class="bg-blue-500/40 hover:bg-blue-500 text-white font-bold py-1 px-2 rounded">Next page</a>
+        </div>
+    </div>
+    <div th:each="metadata : ${metadataRecords}" class="image-container w-full border border-gray-300 rounded flex flex-wrap">
+        <img th:src="@{'/i/' + ${user.getUsername()} + '/' + ${metadata.getFileId()} + '/raw'}" alt="Image" class="w-full h-full object-contain"/>
+        <div class="option-buttons absolute p-1">
+            <a th:href="@{'/i/' + ${user.getUsername()} + '/' + ${metadata.getFileId()} + '/delete'}" class="cursor-pointer bg-red-500/40 hover:bg-red-500 text-white font-bold py-1 px-2 rounded">Delete</a>
+            <a th:href="@{'/i/' + ${user.getUsername()} + '/' + ${metadata.getFileId()}}" class="cursor-pointer bg-blue-500/40 hover:bg-blue-500 text-white font-bold py-1 px-2 rounded">Open</a>
+        </div>
+    </div>
+    <div class="w-full border border-gray-300 rounded flex flex-wrap">
+        <div class="absolute p-1">
+            <a th:href="'?page=' + (${page} - 1)" class="bg-red-500/40 hover:bg-red-500 text-white font-bold py-1 px-2 rounded" th:if="${page} > 0">Last page</a>
+            <a th:href="'?page=' + (${page} + 1)" class="bg-blue-500/40 hover:bg-blue-500 text-white font-bold py-1 px-2 rounded">Next page</a>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

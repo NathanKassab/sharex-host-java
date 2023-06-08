@@ -1,0 +1,14 @@
+<div th:fragment="topnav" class="w-full h-10 bg-zinc-600 text-white flex justify-between items-center pl-2 pr-2">
+    <p>BannockHost</p>
+    <div sec:authorize="isAuthenticated()">
+        <a th:href="@{/panel}" class="text-white hover:text-amber-400 p-1">Panel</a>
+        <a th:href="@{/panel/gallery}" class="text-white hover:text-amber-400 p-1">Gallery</a>
+        <form th:action="@{/logout}" method="post" class="inline">
+            <input class="text-white hover:text-amber-400 cursor-pointer p-1" type="submit" value="Logout"/>
+        </form>
+    </div>
+    <div sec:authorize="isAnonymous()">
+        <a th:href="@{/login}" class="text-white hover:text-amber-400 p-1">Login</a>
+        <a th:href="@{/register}" class="text-white hover:text-amber-400 p-1">Register</a>
+    </div>
+</div>

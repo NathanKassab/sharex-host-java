@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${postId}"></title>
+    <link th:href="@{/css/defaults.css}" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Meta tags for twitter embeds -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" th:content="${embeddedSite}">
+    <meta name="twitter:creator" th:content="${username}">
+    <meta name="twitter:title" th:content="${postId}"/>
+    <meta name="twitter:description" th:content="'Screenshot uploaded by ' + ${username}">
+
+    <!-- Open graph meta tags -->
+    <meta property="og:url" th:content="${url}"/>
+    <meta property="og:title" th:content="${postId}"/>
+    <meta property="og:description" th:content="'Screenshot uploaded by ' + ${username}">
+    <meta property="og:image" th:content="${rawImageUrl}"/>
+
+    <!-- Other meta tags -->
+    <meta name="theme-color" th:content="${color}">
+</head>
+<body>
+<div style="width: 100vw; height: 100vh">
+    <img th:src="${rawImagePath}" th:alt="'screenshot uploaded by ' + ${username}" class="w-full h-full object-contain">
+</div>
+</body>
+</html>
