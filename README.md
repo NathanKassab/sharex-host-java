@@ -5,3 +5,6 @@ Potential improvements (if anyone feels like contributing):
  - Admin panel
  - Better looking invite page
  - Report post option
+ - Email confirmation
+ - 2fa options
+ - Proper index landing page
